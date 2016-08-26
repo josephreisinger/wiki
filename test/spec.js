@@ -216,13 +216,13 @@ describe('Page Methods', () => {
 
 	it('should get categories from an article', () => {
 		nock('http://en.wikipedia.org')
-			.get('/w/api.php?prop=categories&pllimit=100&titles=Luke%20Skywalker&format=json&action=query')
+			.get('/w/api.php?prop=categories&pllimit=100&clshow=!hidden&titles=Luke%20Skywalker&format=json&action=query')
 			.once()
 			.reply(200, JSON.parse(fs.readFileSync('./test/data/1463865898699.json')))
-			.get('/w/api.php?prop=categories&pllimit=100&titles=Luke%20Skywalker&clcontinue=53602%7CFictional_hermits&format=json&action=query')
+			.get('/w/api.php?prop=categories&pllimit=100&clshow=!hidden&titles=Luke%20Skywalker&clcontinue=53602%7CFictional_hermits&format=json&action=query')
 			.once()
 			.reply(200, JSON.parse(fs.readFileSync('./test/data/1463865900848.json')))
-			.get('/w/api.php?prop=categories&pllimit=100&titles=Luke%20Skywalker&clcontinue=53602%7CWikipedia_protected_pages_without_expiry&format=json&action=query')
+			.get('/w/api.php?prop=categories&pllimit=100&clshow=!hidden&titles=Luke%20Skywalker&clcontinue=53602%7CWikipedia_protected_pages_without_expiry&format=json&action=query')
 			.once()
 			.reply(200, JSON.parse(fs.readFileSync('./test/data/1463865905051.json')))
 		return luke.categories().should.eventually.containEql('Category:Fictional farmers');
@@ -230,7 +230,7 @@ describe('Page Methods', () => {
 
 	it('should get partial categories from an article', () => {
 		nock('http://en.wikipedia.org')
-			.get('/w/api.php?prop=categories&pllimit=1&titles=Luke%20Skywalker&format=json&action=query')
+			.get('/w/api.php?prop=categories&pllimit=1&clshow=!hidden&titles=Luke%20Skywalker&format=json&action=query')
 			.once()
 			.reply(200, JSON.parse(fs.readFileSync('./test/data/1463865898699.json')));
 		return luke.categories(false, 1).should.eventually.have.property('results').containEql('Category:Action heroes');
