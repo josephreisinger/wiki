@@ -25,7 +25,8 @@
   },
   "main": "./dist/wiki.js",
   "files": [
-    "src/"
+    "src/",
+    "dist/"
   ],
   "dependencies": {
     "babel-polyfill": "^6.9.0",
