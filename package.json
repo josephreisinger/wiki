@@ -24,6 +24,9 @@
     "node": ">=0.10.4"
   },
   "main": "./dist/wiki.js",
+  "files": [
+    "src/"
+  ],
   "dependencies": {
     "babel-polyfill": "^6.9.0",
     "isomorphic-fetch": "^2.2.1",
