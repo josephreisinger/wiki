@@ -32,7 +32,6 @@
     "babel-polyfill": "^6.9.0",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.13.0",
-    "postinstall-build": "^0.2.1",
     "underscore": "^1.8.3",
     "wiki-infobox-parser-core": "0.0.1"
   },
@@ -55,8 +54,7 @@
     "test": "node_modules/.bin/_mocha --compilers js:babel-register",
     "cover": "babel-node ./node_modules/istanbul/lib/cli cover node_modules/.bin/_mocha",
     "docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "postinstall": "postinstall-build dist 'npm run build'"
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "homepage": "https://github.com/dijs/wiki",
   "bugs": "https://github.com/dijs/wiki/issues",
