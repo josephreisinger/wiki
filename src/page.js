@@ -175,12 +175,14 @@ export default function wikiPage(rawPageInfo, apiOptions) {
 	 * @method WikiPage#categories
 	 * @param  {Boolean} [aggregated] - return all categories (default is true)
 	 * @param  {Number} [limit] - number of categories per page
+	 * @param  {Boolean} [includeHidden] - include hidden categories
 	 * @return {Promise} - returns results if aggregated [and next function for more results if not aggregated]
 	 */
-	function categories(aggregated = true, limit = 100) {
+	function categories(aggregated = true, limit = 100, includeHidden = false) {
 		const _pagination = pagination(apiOptions, {
 			prop: 'categories',
 			pllimit: limit,
+      clshow: includeHidden ? null : '!hidden',
 			titles: raw.title
 		}, res => _.pluck(res.query.pages[raw.pageid].categories, 'title'));
 		if (aggregated) {
